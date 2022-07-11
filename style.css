@@ -88,7 +88,7 @@ a:hover {
     width: 100px;
     position: fixed; /*absolute mudei para fixed para acompanhar o scroll */
     top: 0;/* em cima */
-    right: 0; /* no canto */
+    right: 0; /* no canto direito*/
     display: flex;
     justify-content: center;
     cursor: pointer;
@@ -127,7 +127,7 @@ a:hover {
 /* MENU */
 
 .menu {
-    position: fixed; /* absolute mudei para fixed para movimentar junto com o scroll */
+    position: fixed; /* absolute - mudei para fixed para movimentar junto com o scroll */
     top: 28px;
     right: 30px;
     background: #ffffff6b; /* pode setar como red para verificar que o círculo do menu está no lugar dos traces*/
@@ -155,7 +155,7 @@ a:hover {
     transition: 800ms ease-in-out 0s;
 }
 
-/* some com as bolinhas da lista*/
+/* some com as bolinhas (marcadores) da lista */
 .menu-items ul {
     list-style-type: none;
 }
@@ -250,7 +250,7 @@ a:hover {
 .card-container {
     display: flex;
     align-items: center;
-    justify-content: space-evenly; /* alinamentos com espaços perfeitos entre eles */
+    justify-content: space-evenly; /* alinhamentos com espaços perfeitos entre eles */
     width: 90%;
 }
 
@@ -272,7 +272,7 @@ a:hover {
     transition: 0.3s;
 }
 
-/* Alteração da foto do card da Minha família */
+/* Alteração da foto do card da Minha família *familia.jpeg Photo by author */
 .card:nth-child(1) {
     background-image: url('./familia.jpeg');
     color: #ff07de;
