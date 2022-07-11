@@ -1,0 +1,438 @@
+/* IMPORTAÇÃO DE FONTE */
+@import url('https://fonts.googleapis.com/css2?family=Amatic+SC&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Amatic+SC&family=Oswald&display=swap');
+
+/* BODY */
+body {
+    padding: 0;
+    margin: 0;
+    color: #ffffff;
+    font-family: 'oswald', 'amatic sc', sans-serif;
+}
+
+/* HEADER */
+
+.header-wrapper {
+    height: 100vh;
+    width: 100%;
+    background: linear-gradient(45deg, #0a0808, #202e31, #292b3f, #284a4d);
+    background-size: 400% 400%; /* Aumenta o tamanho para mostrar a última cor e usar a animação para mover depois cada um dos 100%*/
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    /* o animation so é colocado no final depois de definir o @keyframes no final do arquivo*/
+    animation: backgroundTransition 8s ease-in-out infinite;
+}
+
+h1 {
+    text-transform: uppercase;
+    letter-spacing: 4px;
+}
+
+h2 {
+    text-transform: uppercase;
+    letter-spacing: 4px;
+}
+
+.social-media {
+    margin-top: 1rem;
+    display: flex;
+}
+
+/*Tratar os links do social-media*/
+.social-media a {
+    text-decoration: none;
+    color: #ffffff;
+    font-size: 24px;
+    padding: 1rem 4rem;
+    border: 1px solid #ffffff;
+    min-width: 4rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: .5s cubic-bezier(0.55, 0.025, 0.675, 0.97);
+}
+
+/*Efeito quando passa o mouse em cima (hover)*/
+a:hover {
+    color: #2E1C2B;
+    background-color: #ffffff;
+}
+
+/*Keyframes para mover a tela*/
+@keyframes backgroundTransition {
+    0% {
+        background-position: 0% 80%;
+    }
+    50% {
+        background-position: 80% 100%;
+    }
+    100% {
+        background-position: 0% 90%;
+    }
+}
+
+/* MENU HAMBURGUER */
+
+.checkbox-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* div principal que contém o label*/
+.checkbox {
+    height: 100px;
+    width: 100px;
+    position: fixed; /*absolute mudei para fixed para acompanhar o scroll */
+    top: 0;/* em cima */
+    right: 0; /* no canto */
+    display: flex;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 9999; /* garantir que ele fique na frente de qualquer elemento*/
+    transition: 400ms ease-in-out 0s; /* delay 0s */
+}
+
+.checkbox .trace {
+    width: 50px;
+    height: 3px;
+    background-color: #d18cdf;
+    position: absolute;
+    border-radius: 4px;
+    transition: 0.5s ease-in-out 0s;
+}
+
+.checkbox .trace:nth-child(1) {
+    top: 26px;
+    transform: rotate(0);
+}
+
+.checkbox .trace:nth-child(2) {
+    top: 46px;
+    transform: rotate(0);
+}
+
+.checkbox .trace:nth-child(3) {
+    top: 66px;
+    transform: rotate(0);
+}
+
+#toggle {
+    display: none;
+}
+
+/* MENU */
+
+.menu {
+    position: fixed; /* absolute mudei para fixed para movimentar junto com o scroll */
+    top: 28px;
+    right: 30px;
+    background: #ffffff6b; /* pode setar como red para verificar que o círculo do menu está no lugar dos traces*/
+    height: 50%;
+    width: 50%;
+    border-bottom-left-radius: 25%;
+    box-shadow: 0px 0px 0px 0px #ffffff6b;
+    z-index: -1; /* fica por trás de tudo*/
+    transition: 800ms ease-in-out 0s;
+    
+}
+
+.menu-items {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 50%;
+    height: 50vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2; /* fica na frente do menu que é -1*/
+    opacity: 0;
+    visibility: hidden;
+    transition: 800ms ease-in-out 0s;
+}
+
+/* some com as bolinhas da lista*/
+.menu-items ul {
+    list-style-type: none;
+}
+
+.menu-items ul li a {
+    font-family: amatic sc;
+    margin: 10px 0; /* 10px na vertical e 0 na horizontal*/
+    color: #292b3f;
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    font-size: 40px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+/* animação do hover dos itens do menu */
+.menu-items ul li:hover a {
+    color: #050404;
+    background-color: #ffffff6b;
+    font-size: 43px;
+    transition: 400ms ease-in 0s;
+}
+
+/* animação apenas do item contato do menu*/
+.menu-items .contact-menu-item:hover a {
+    color: #893168;
+    font-size: 44px;
+    transition: 400ms ease-in-out 0s;
+}
+
+/* ANIMAÇÃO DO MENU */
+
+#toggle:checked + .checkbox .trace:nth-child(1) {
+    transform: rotate(45deg);
+    background-color: #0a0808;
+    top: 47px;
+}
+
+#toggle:checked + .checkbox .trace:nth-child(2) {
+    transform: translateX(-100px);
+    width: 30px;
+    visibility: hidden;
+    opacity: 0;
+}
+
+#toggle:checked + .checkbox .trace:nth-child(3) {
+    transform: rotate(-45deg);
+    background-color: #0a0808;
+    top: 48px;
+}
+
+/* div que sustenta os 3 traços (traces) */
+#toggle:checked + .checkbox {
+    background-color: #ffffff; /* fff */
+}
+
+/* quando o toggle for checked afeta o menu*/
+#toggle:checked ~ .menu {
+    box-shadow: 0px 0px 0px 40vmax #ffffff6b; /* pega 40 do máximo de largura e altura */
+    z-index: 1; /* altera o z-index original que está setado como -1*/
+}
+
+#toggle:checked ~ .menu-items {
+    visibility: visible;
+    opacity: 1;
+}
+
+/* Animação do Item Contato do Menu para levar ao final da página*/
+.menu-items .contact-menu-item:active a {
+    color: #f21212;
+    font-size: 50px;
+    transition: 50ms ease-in-out 0s;
+}
+
+/* HOME CARDS */
+
+.hcontainer {
+    color: #2E1C2B;
+}
+
+.container {
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly; /* ou space-between se achar legal*/
+    align-items: center;
+    margin: 3rem 0;
+}
+
+.card-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly; /* alinamentos com espaços perfeitos entre eles */
+    width: 90%;
+}
+
+/*room.jpg Photo by <a href="https://unsplash.com/es/@adrienolichon?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Adrien Olichon</a> on <a href="https://unsplash.com/s/photos/black?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>*/
+.card {
+    height: 300px;
+    width: 400px;
+    margin: 3rem 0 0 0;
+    background-image: url('./room.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    filter: grayscale(0.5);
+    color: #ffffff;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+/* Alteração da foto do card da Minha família */
+.card:nth-child(1) {
+    background-image: url('./familia.jpeg');
+    color: #ff07de;
+}
+
+.card-text {
+    width: 40%;
+    font-family: sans-serif;
+    text-align: justify;
+    letter-spacing: 1px;
+    color: rgb(109, 109, 109);
+}
+
+/*predefinição do card-wrapper*/
+.card-wrapper {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.card-wrapper::before {
+    content: '';
+    position: absolute;
+    height: 100px;
+    width: 100px;
+    display: block;
+    border: 1px solid #ffffff;
+    opacity: 0;
+    transition: 0.3s;
+}
+
+.card-wrapper h2 {
+    font-size: 40px;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    margin: 0;
+    transition: 0.3s;
+}
+
+.card-wrapper p {
+    font-size: 0;
+    visibility: hidden;
+    opacity: 0;
+    font-weight: bold;
+    text-transform: uppercase;
+    transition: 0.3s;
+}
+
+.card:hover {
+    filter: unset; /* remove o filtro quando passa o mouse*/
+}
+
+.card:hover > .card-wrapper::before {
+    height: 250px;
+    width: 350px;
+    opacity: 1;
+}
+
+.card:hover > .card-wrapper p {
+    font-size: 14px;
+    opacity: 1;
+    visibility: visible;
+}
+
+/* FOOTER */
+
+.footer {
+    height: 100px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #284a4d;  
+}
+
+/* Contact adjustments */
+.contact {
+    letter-spacing: 4px;
+    padding-left: 5px;
+    animation: contactTransition 5s ease-in-out 0s infinite;
+}
+
+.contact a {
+    color: #ffffff;
+    text-decoration: none;
+}
+
+.contact a:hover{
+    color: #2E1C2B;
+}
+
+/*Keyframes para alternar a cor do background do contato*/
+@keyframes contactTransition {
+    0% {
+        background-color: #ff07de;
+    }
+    50% {
+        background-color: #f21212;
+    }
+    100% {
+        background-color: #ff07de;
+    }
+}
+
+/* REPONSIVO - adaptação para mobile*/
+
+@media (max-width: 800px) {
+    h1 {
+        font-size: 150%;
+        margin: auto;
+    }
+
+    h2 {
+        font-size: 90%;
+        margin: 1rem;
+    }
+
+    .social-media {
+        margin-top: 0rem;
+        margin-block-end: 1rem;
+        display: flex;
+        flex-direction: column;
+        height: max-content;
+    }
+    
+    .container {
+        margin-top: 0;
+    }
+
+    /* originalmente é row mas estava column daí o texto vinha na frente */
+    .card-container {
+        flex-direction: column-reverse;
+    }
+    
+    /* reverter apenas a coluna do meio que estava invertida para o responsivo Desktop */
+    .container .card-container:nth-child(3){
+        flex-direction: column;
+    } 
+
+    .card {
+        height: 250px;
+        width: 250px;
+        margin-top: 1rem;
+    }
+
+    .card-text {
+        width: 90%;
+        margin-top: 2rem;
+        text-align: justify;
+    }
+
+    .card:hover > .card-wrapper::before {
+        height: 190px;
+        width: 190px;
+    }
+
+    .footer{
+        flex-direction: column;
+    }
+}
